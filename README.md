@@ -12,6 +12,7 @@ module "validate" {
 
   schema = file("${path.module}/schema.json")
 }
+```
 
 ## Inputs
 
@@ -23,6 +24,5 @@ module "validate" {
 ## Outputs
 
 No outputs.
-```
 <!-- END_TF_DOCS -->
 <!-- prettier-ignore-end -->

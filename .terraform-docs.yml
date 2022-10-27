@@ -1,11 +1,11 @@
 content: |-
   ```hcl
   {{ include "examples/default/main.tf" }}
+  ```
 
   {{ .Inputs }}
 
   {{ .Outputs }}
-  ```
 formatter: markdown
 output:
   file: README.md
