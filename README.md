@@ -1,27 +1,17 @@
 <!-- prettier-ignore-start -->
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+```hcl
+module "validate" {
+  source = "../.."
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_http"></a> [http](#requirement\_http) | ~> 3.1 |
+  instance = jsonencode({
+    firstName = "John"
+    lastName  = "Doe"
+    age       = 21
+  })
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_http"></a> [http](#provider\_http) | ~> 3.1 |
-
-## Modules
-
-No modules.
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [http_http.this](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
+  schema = file("${path.module}/schema.json")
+}
 
 ## Inputs
 
@@ -33,5 +23,6 @@ No modules.
 ## Outputs
 
 No outputs.
+```
 <!-- END_TF_DOCS -->
 <!-- prettier-ignore-end -->
