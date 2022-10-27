@@ -1,3 +1,11 @@
+content: |-
+  ```hcl
+  {{ include "main.tf" }}
+  ```
+
+  ```json
+  {{ include "schema.json" }}
+  ```
 formatter: markdown
 output:
   file: README.md

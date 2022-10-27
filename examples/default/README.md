@@ -1,32 +1,41 @@
 <!-- prettier-ignore-start -->
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+```hcl
+module "validate" {
+  source = "../.."
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_http"></a> [http](#requirement\_http) | 3.1.0 |
+  instance = jsonencode({
+    firstName = "John"
+    lastName  = "Doe"
+    age       = 21
+  })
 
-## Providers
+  schema = file("${path.module}/schema.json")
+}
+```
 
-No providers.
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_validate"></a> [validate](#module\_validate) | ../.. | n/a |
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
+```json
+{
+  "$id": "https://example.com/person.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "age": {
+      "description": "Age in years which must be equal to or greater than zero.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "firstName": {
+      "description": "The person's first name.",
+      "type": "string"
+    },
+    "lastName": {
+      "description": "The person's last name.",
+      "type": "string"
+    }
+  },
+  "title": "Person",
+  "type": "object"
+}
+```
 <!-- END_TF_DOCS -->
 <!-- prettier-ignore-end -->
