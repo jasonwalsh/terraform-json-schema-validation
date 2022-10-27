@@ -1,4 +1,6 @@
 content: |-
+  {{ .Header }}
+
   ```hcl
   {{ include "examples/default/main.tf" }}
   ```
